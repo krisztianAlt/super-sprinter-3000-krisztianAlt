@@ -72,7 +72,6 @@ def update_story():
             for index in range(0, len(record)):
                 record[index] = record[index].replace('LINEBREAK', '\r\n')
             story_to_update = record
-    print(story_to_update)
     return render_template("update.html", story=story_to_update)
 
 

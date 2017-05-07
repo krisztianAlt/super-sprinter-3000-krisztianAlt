@@ -1,0 +1,50 @@
+<html>
+  <head>
+    <title>Super Sprinter 3000</title>
+  </head>
+  <body>
+    <h1>User Story Manager</h1>
+    <form action="{{ url_for('add_new_item') }}" method="POST">
+        <p><button type="submit">Add new User Story</button></p>
+    </form>
+    <br>
+    <br>
+    <table border="3" width="1100" style="table-layout:fixed" bgcolor="Gainsboro">
+        <tr align="center">
+            <td width="30"><strong>ID</strong></td>
+            <td width="120"><strong>Story Title</strong></td>
+            <td width="250"><strong>User Story</strong></td>
+            <td width="250"><strong>Acceptance Criteria</strong></td>
+            <td width="80"><strong>Business Value</strong></td>
+            <td width="80"><strong>Estimation</strong></td>
+            <td width="80"><strong>Status</strong></td>
+        </tr>
+        {% for story in stories %}
+            <tr bgcolor = "White">
+                <td align="center">{{story[0]}}</td>
+                <td style="word-wrap: break-word;">{{story[1]}}</td>
+                <td style="word-wrap: break-word;">{{story[2]}}</td>
+                <td style="word-wrap: break-word;">{{story[3]}}</td>
+                <td align="center">{{story[4]}}</td>
+                <td align="center">{{story[5]}}</td>
+                <td align="center">{{story[6]}}</td>
+                <td align="center" bgcolor="Gainsboro">
+                    <form action="{{ url_for('update_story', story_id = '{{story[0]}}') }}" method=post class=update-story>
+                        <input type=hidden value="{{story[0]}}" name="story_id_to_update"></input>
+                        <button type=submit><img src="/static/pen_icon.png" width="40" height="40" alt="Update"></button>
+                    </form>
+                </td>                
+                <td align="center" bgcolor="Gainsboro">
+                    <form action="{{ url_for('delete_story') }}" method=post class=delete-story>
+                        <input type=hidden value="{{story[0]}}" name="story_id_to_delete"></input>
+                        <button type=submit><img src="/static/trash_icon.png" width="40" height="40" alt="Delete"></button>
+                    </form>
+                </td>
+            
+            </tr>
+        {% endfor %}
+    </table>
+    <br>
+    <p><a target="_blank" href="https://www.youtube.com/watch?v=t3J_2R9rAp8">Just relax...</a></p>
+  </body>
+</html>

@@ -1,4 +1,3 @@
-# Do not modify this file
 
 
 # read file into a @table
